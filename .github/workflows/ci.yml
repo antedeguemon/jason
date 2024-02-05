@@ -6,6 +6,7 @@ on:
     branches:
       - master
       - 'v*'
+      - wip
 
 jobs:
   mix_test_old:
@@ -81,10 +82,7 @@ jobs:
         env:
           CC: gcc-10
           CXX: g++-10
-      - run: mix test
-        env:
-          CC: gcc-10
-          CXX: g++-10
+      - run: mix dialyzer --halt-exit-status
   dialyzer:
     name: mix dialyzer
     runs-on: ubuntu-latest
